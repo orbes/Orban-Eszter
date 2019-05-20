@@ -11,6 +11,7 @@ class TextBox : public Widget {
 protected:
     string _text;
 	bool _edit;
+	int _r, _g, _b;
 
 public:
     TextBox(Widget * parent, int id, int x, int y, int sx, int sy);
@@ -19,6 +20,7 @@ public:
 
     const string & getText() const;
     void setText(const string & s);
+    void setColor(int r, int g, int b);
     void setEdit(bool edit);
 };
 

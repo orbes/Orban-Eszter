@@ -49,8 +49,9 @@ void AmobaPalya::draw()
            switch (GameMaster->get_value(i,j))
            {
                case 0: matrix[i][j].draw(); break;
-               case 1: matrix[i][j].setText("X"); break;
-               case 2: matrix[i][j].setText("O"); break;
+               case 1: matrix[i][j].setColor(222,0,0); matrix[i][j].setText("X"); break;
+               case 2: matrix[i][j].setColor(0,0,222); matrix[i][j].setText("O"); break;
+               case 3: matrix[i][j].setColor(0,222,0); break;
            }
         }
     }
@@ -71,8 +72,15 @@ void AmobaPalya::handle(Widget * source, int message, event ev)
                 }
             }
         }
-
-}
+        if(GameMaster->is_fulltable() && !GameMaster->is_win())
+        {
+            GameMaster->set_matrix_defvalue();
+            draw();
+        }else if(GameMaster->is_win())
+        {
+            draw();
+        }
+    }
 }
 
 
